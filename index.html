@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            text-align: center;
+            margin: 20px;
+            color: #fff;
+        }
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        input {
+            padding: 15px;
+            width: 250px;
+            margin: 10px;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            text-align: center;
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            transition: 0.3s;
+        }
+        input::placeholder {
+            color: #eee;
+        }
+        input:focus {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        button {
+            padding: 15px 25px;
+            background: #ffcc00;
+            color: #000;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        button:hover {
+            background: #ff9900;
+        }
+        table {
+            width: 60%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+        }
+        th {
+            background: rgba(255, 255, 255, 0.4);
+            font-weight: bold;
+        }
+        td {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h2>Multiplication Table</h2>
+    <input type="number" id="numberInput" placeholder="Enter a number">
+    <button onclick="generateMultiplicationTable()">Generate Table</button>
+    <div id="tableOutput"></div>
+
+    <script>
+        function generateMultiplicationTable() {
+            let number = parseInt(document.getElementById("numberInput").value);
+            let outputDiv = document.getElementById("tableOutput");
+            
+            if (isNaN(number)) {
+                outputDiv.innerHTML = "<p style='color: yellow; font-size: 18px;'>Please enter a valid number.</p>";
+                return;
+            }
+            
+            let tableHTML = `<h3 style='margin-top: 20px; font-size: 24px;'>Multiplication Table for ${number}:</h3>`;
+            tableHTML += `<table>`;
+            tableHTML += `<tr><th>Multiplier</th><th>Result</th></tr>`;
+            
+            for (let i = 1; i <= 10; i++) {
+                tableHTML += `<tr><td>${number} x ${i}</td><td>${number * i}</td></tr>`;
+            }
+            
+            tableHTML += `</table>`;
+            
+            outputDiv.innerHTML = tableHTML;
+        }
+    </script>
+</body>
+</html>
